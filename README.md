@@ -1,4 +1,4 @@
-# CasADi MPC ROS1 Package
+# CasADi MPC ROS1 Package (NOT TESTED)
 
 ## Overview
 
