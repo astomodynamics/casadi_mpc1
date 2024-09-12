@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(casadi_mpc)
+project(casadi_mpc1)
 
 ## Find catkin and any catkin packages
 find_package(catkin REQUIRED COMPONENTS
@@ -21,6 +21,6 @@ include_directories(
 ## Mark Python scripts for installation
 ## in order to be installed
 catkin_install_python(PROGRAMS
-  src/casadi_mpc/casadi_mpc_node.py
+  src/casadi_mpc_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

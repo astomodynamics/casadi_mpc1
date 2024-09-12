@@ -169,15 +169,15 @@ class CasadiMPCNode:
     def control_callback(self, event):
         # Solve MPC problem
         x0 = np.zeros((3, self.horizon + 1))
-        x0[:, 0] = self.current_state
+        x0[:, 0] = self.current_state.full().ravel()
         u0 = np.zeros((2, self.horizon))
 
         res = self.solver(
             x0=ca.vertcat(ca.reshape(x0, -1, 1), ca.reshape(u0, -1, 1)),
             lbx=ca.vertcat([self.x_min, self.y_min, self.theta_min] * (self.horizon + 1),
-                           [self.v_min, -self.omega_min] * self.horizon),
+                        [self.v_min, -self.omega_min] * self.horizon),
             ubx=ca.vertcat([self.x_max, self.y_max, self.theta_max] * (self.horizon + 1),
-                           [self.v_min, self.omega_max] * self.horizon),
+                        [self.v_max, self.omega_max] * self.horizon),
             lbg=0,
             ubg=0,
             p=ca.vertcat(self.current_state, self.goal_state)
